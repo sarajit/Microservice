@@ -31,6 +31,8 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
 	protected WebApplicationContext createServletApplicationContext() {
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.register(SecurityConfig.class,WebConfig.class);
+		context.addListener(new SessionListener());
+		context.addListener(new HttpSessionEventPublisher());
 		return context;
 	}
 
